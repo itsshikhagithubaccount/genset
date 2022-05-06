@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+    <div id="main-content">
+        <div class="card alert">
+            <div class="card-body">
+                <div class="card-header m-b-20">
+                    <h4>Add Country Detail</h4>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        {{form.country_name|as_crispy_field}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">
+                            <i class="ti-save"></i>
+                            Submit
+                        </button>
+                    </div>
+
+                    <div class="col-md-2">
+                        <a href="{% url 'country_list' %}" class="btn btn-primary btn-block btn-lg">
+                            <i class="ti-server"></i> Back to list
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="main-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card alert">
+                <div class="card-header">
+                    <h4>List Of DgState</h4>
+                    <div class="card-header-right-icon">
+                        <ul>
+                            <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+                            <li class="doc-link"><a href="#"><i class="ti-link"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bootstrap-data-table-panel">
+
+                    <table class="table table-light">
+                        <thead class="border-bottom font-weight-bold">
+
+                        <td>Dg Start Time</td>
+                        <td>Dg Off Time</td>
+                        <td>Dg Master Name</td>
+                        <td>Battery Master Name</td>
+                        <td>Dg Externaltank Name</td>
+                        <td>Fuel Level Name</td>
+                        <td>Dg Master</td>
+                        <td>Battery Master</td>
+                        <td>Dg Externaltank Master</td>
+                        <td>Fuel Level</td>
+                        <td>User</td>
+                        <td>Created On</td>
+                        <td>updated On</td>
+                        <td>Modified User</td>
+                        <td><a href="{% url 'condition_form' %}" class="btn btn-warning">
+                            <i class="ti-plus"></i> Add New
+                        </a>
+                        </td>
+                        </thead>
+                        <tbody>
+
+                        {% for condition in condition_list %}
+                        <tr>
+                            <td>{{condition.dg_start_time}}</td>
+                            <td>{{condition.dg_off_time}}</td>
+                            <td>{{condition.dg_master_name}}</td>
+                            <td>{{condition.battery_master_name}}</td>
+                            <td>{{condition.dg_externaltank_name}}</td>
+                            <td>{{condition.fuel_level_name}}</td>
+                            <td>{{condition.dg_master}}</td>
+                            <td>{{condition.battery_master}}</td>
+                            <td>{{condition.dg_externaltank_master}}</td>
+                            <td>{{condition.fuel_level}}</td>
+                            <td>{{condition.user}}</td>
+                            <td>{{condition.created_on}}</td>
+                            <td>{{condition.updated_on}}</td>
+                            <td>{{condition.modified_user}}</td>
+
+                            <td>
+                                <a href="{% url 'condition_update' condition.id %}" class="btn text-secondary px-0">
+                                    <i class="ti-pencil-alt"></i>
+                                </a>
+                                <a onclick="return confirm('Are you sure you want to delete this ???')"
+                                   href="{% url 'condition_delete' condition.id  %}" class="d-inline">
+                                    <span class="btn">
+                                        <i class=" ti-trash text-danger float-right"></i>
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

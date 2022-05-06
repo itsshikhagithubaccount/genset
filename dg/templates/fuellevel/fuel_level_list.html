@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="main-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card alert">
+                <div class="card-header">
+                    <h4>Fuel Level Details </h4>
+                    <div class="card-header-right-icon">
+                        <ul>
+                            <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+                            <li class="doc-link"><a href="#"><i class="ti-link"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bootstrap-data-table-panel">
+
+                    <table class="table table-light">
+                        <thead class="border-bottom font-weight-bold">
+                        <td>Dg Master</td>
+                        <td>Dg Name</td>
+                        <td>Fuel Current Level</td>
+                        <td>Monitoring Time</td>
+                        <td>Diesel On Time</td>
+                        <td>Diesel Off Time</td>
+                        <td>Fuel Level Name</td>
+                        <td>User</td>
+                        <td>Created On</td>
+                        <td>Updated On</td>
+                        <td>Modified User</td>
+                        <td><a href="{% url 'fuel_level_form' %}" class="btn btn-warning">
+                            <i class="ti-plus"></i> Add New
+                        </a>
+                        </td>
+                        </thead>
+                        <tbody>
+
+                        {% for fuel in fuel_level_list %}
+                        <tr>
+                            <td>{{fuel.dg_master}}</td>
+                            <td>{{fuel.dg_name}}</td>
+                            <td>{{fuel.fuel_current_level}}</td>
+                            <td>{{fuel.monitoring_time}}</td>
+                            <td>{{fuel.diesel_on_time}}</td>
+                            <td>{{fuel.diesel_off_time}}</td>
+                            <td>{{fuel.fuel_level_name}}</td>
+                            <td>{{fuel.user}}</td>
+                            <td>{{fuel.created_on}}</td>
+                            <td>{{fuel.updated_on}}</td>
+                            <td>{{fuel.modified_user}}</td>
+
+                            <td>
+                                <a href="{% url 'fuel_level_update' fuel.id %}" class="btn text-secondary px-0">
+                                    <i class="ti-pencil-alt"></i>
+                                </a>
+                                <a onclick="return confirm('Are you sure you want to delete this ???')"
+                                   href="{% url 'fuel_level_delete' fuel.id  %}" class="d-inline">
+                                    <span class="btn">
+                                        <i class=" ti-trash text-danger float-right"></i>
+                                    </span>
+                                </a>
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

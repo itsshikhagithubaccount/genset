@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div id="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card alert">
+                <div class="card-body">
+                    <h4>Maintenance Details</h4>
+
+
+                    <table class="table table-dark">
+                        <thead class="border-bottom font-weight-bold">
+
+                        <tr>
+                            <td>Dg Master</td>
+                            <td>Dg Name</td>
+                            <td>Category</td>
+                            <td>Historical Cost</td>
+                            <td>User</td>
+                            <td>Created On</td>
+                            <td>Updated On</td>
+                            <td>Modified User</td>
+                            <td>
+                              <a href="{% url 'maintenance_form' %}" class="btn btn-warning">
+                            <i class="ti-plus"></i> Add New
+                        </a>
+                            </td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for maintenance in maintenance_list %}
+                        <tr>
+                            <td>{{maintenance.dg_master}}</td>
+                            <td>{{maintenance.dg_type}}</td>
+                            <td>{{maintenance.category}}</td>
+                            <td>{{maintenance.historical_cost}}</td>
+                            <td>{{maintenance.user}}</td>
+                            <td>{{maintenance.created_on}}</td>
+                            <td>{{maintenance.updated_on}}</td>
+                            <td>{{maintenance.modified_user}}</td>
+
+                            <td>
+                                <a href="{% url 'battery_template_update' template.id %}"
+                                   class="btn text-secondary px-0">
+                                    <i class="ti-pencil-alt"></i>
+                                </a>
+                                <a onclick="return confirm('Are you sure you want to delete this ???')"
+                                   href="{% url 'battery_template_delete' template.id  %}" class="d-inline">
+                                    <span class="btn">
+                                        <i class=" ti-trash text-danger float-right"></i>
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

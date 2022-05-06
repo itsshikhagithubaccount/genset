@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+    <div id="main-content">
+        <div class="card alert">
+            <div class="card-body">
+                <div class="card-header m-b-20">
+                    <h4>Add Dg Condition Detail</h4>
+                </div>
+
+                <!-- Main Content Here -->
+
+
+                <div class="row">
+                    <div class="col-md-3">
+                        {{form.dg_master|as_crispy_field}}
+                    </div>
+
+                    <div class="col-md-3">
+                        {{form.battery_master|as_crispy_field}}
+                    </div>
+                    <div class="col-md-3">
+                        {{form.dg_externaltank_master|as_crispy_field}}
+                    </div>
+                    <div class="col-md-3">
+                        {{form.fuel_level|as_crispy_field}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        {{form.dg_start_time|as_crispy_field}}
+                    </div>
+
+                    <div class="col-md-3">
+                        {{form.dg_off_time|as_crispy_field}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        {{form.dg_master_name|as_crispy_field}}
+                    </div>
+                    <div class="col-md-3">
+                        {{form.battery_master_name|as_crispy_field}}
+                    </div>
+                    <div class="col-md-3">
+                        {{form.dg_externaltank_name|as_crispy_field}}
+                    </div>
+                    <div class="col-md-3">
+                        {{form.fuel_level_name|as_crispy_field}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">
+                            <i class="ti-save"></i>
+                            Submit
+                        </button>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="{% url 'condition_list' %}" class="btn btn-primary btn-block btn-lg">
+                            <i class="ti-server"></i> Back to list
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}
+

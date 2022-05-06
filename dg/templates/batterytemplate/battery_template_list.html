@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div id="main-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card alert">
+
+                <div class="card-header">
+                    <h4>Add Battery Details</h4>
+                    <div class="card-header-right-icon">
+                        <ul>
+                            <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+                            <li class="doc-link"><a href="#"><i class="ti-link"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                <div class="bootstrap-data-table-panel">
+                    <table class="table table-light">
+                        <thead class="border-bottom font-weight-bold">
+                        <td>Battery Template Name</td>
+                        <td>Type</td>
+                        <td>Rating Ah</td>
+                        <td>Quantity Nos</td>
+                        <td>Charging Facility</td>
+                        <td>Make</td>
+                        <td>Battery Metering</td>
+                        <td>Battery Current Voltage</td>
+                        <td>Battery Reading Timestamp</td>
+                        <td>Model</td>
+                        <td>User</td>
+                        <td>Created On</td>
+                        <td>Updated On</td>
+                        <td>Modified User</td>
+                        <td><a href="{% url 'battery_template_form' %}" class="btn btn-warning">
+                            <i class="ti-plus"></i> Add New
+                        </a>
+                        </td>
+                        </thead>
+
+                        <tbody>
+                        {% for template in battery_template_list %}
+                        <tr>
+                            <td>{{templat.battery_template_name}}</td>
+                            <td>{{template.type}}</td>
+                            <td>{{template.rating_ah}}</td>
+                            <td>{{template.quantity_nos}}</td>
+                            <td>{{template.charging_facility}}</td>
+                            <td>{{template.make}}</td>
+                            <td>{{template.battery_metering}}</td>
+                            <td>{{template.battery_current_voltage}}</td>
+                            <td>{{template.battery_reading_timestamp}}</td>
+                            <td>{{template.model}}</td>
+                            <td>{{template.user}}</td>
+                            <td>{{template.created_on}}</td>
+                            <td>{{template.updated_on}}</td>
+                            <td>{{template.modified_user}}</td>
+
+                            <td>
+                                <a href="{% url 'battery_template_update' template.id %}"
+                                   class="btn text-secondary px-0">
+                                    <i class="ti-pencil-alt"></i>
+                                </a>
+
+                                <a onclick="return confirm('Are you sure you want to delete this ???')"
+                                   href="{% url 'battery_template_delete' template.battery_template.id  %}" class="d-inline">
+                                    <span class="btn">
+                                        <i class=" ti-trash text-danger float-right"></i>
+                                    </span>
+                                </a>
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

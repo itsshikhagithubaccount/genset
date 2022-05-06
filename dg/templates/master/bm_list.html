@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="main-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card alert">
+                <div class="card-header">
+                    <h4>City Details </h4>
+                    <div class="card-header-right-icon">
+                        <ul>
+                            <li class="card-close" data-dismiss="alert"><i class="ti-close"></i></li>
+                            <li class="doc-link"><a href="#"><i class="ti-link"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bootstrap-data-table-panel">
+
+                    <table class="table table-light">
+                        <thead class="border-bottom font-weight-bold">
+
+                        <td>Battery Current Voltage</td>
+                        <td>Battery Reading Timestamp</td>
+                        <td>Battery Template Name</td>
+                        <td>Battery Name</td>
+                        <td>Battery Master</td>
+                        <td>User</td>
+                        <td>Created On</td>
+                        <td>updated On</td>
+                        <td>Modified User</td>
+                        <td><a href="{% url 'bm_form' %}" class="btn btn-warning">
+                            <i class="ti-plus"></i> Add New
+                        </a>
+                        </td>
+                        </thead>
+                        <tbody>
+
+                        {% for batterymaster in bm_list %}
+                        <tr>
+                            <td>{{batterymaster.battery_current_voltage}}</td>
+                            <td>{{batterymaster.battery_reading_timestamp}}</td>
+                            <td>{{batterymaster.battery_template_name}}</td>
+                            <td>{{batterymaster.battery_name}}</td>
+                            <td>{{batterymaster.battery_template}}</td>
+                            <td>{{batterymaster.user}}</td>
+                            <td>{{batterymaster.created_on}}</td>
+                            <td>{{batterymaster.updated_on}}</td>
+                            <td>{{batterymaster.modified_user}}</td>
+
+                            <td>
+                                <a href="{% url 'bm_update' batterymaster.battery_master_id %}" class="btn text-secondary px-0">
+                                    <i class="ti-pencil-alt"></i>
+                                </a>
+                                <a onclick="return confirm('Are you sure you want to delete this ???')"
+                                   href="{% url 'bm_delete' batterymaster.battery_master_id  %}" class="d-inline">
+                                    <span class="btn">
+                                        <i class=" ti-trash text-danger float-right"></i>
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
